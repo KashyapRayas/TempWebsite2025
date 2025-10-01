@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kashyap Rayas</title>
+    <style>
+        /*
+ * General resets for body/html to ensure full-height flex layout.
+ * This should typically be at the very top of your CSS.
+ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Important for body to take full height */
+}
+
+/* @font-face rule MUST be at the top level, outside any selector */
+@font-face {
+  font-family: "Stara";
+  src: local("Stara-Medium"), url("/Stara-Medium.otf") format("opentype");
+  font-weight: 500; /* Assuming Stara-Medium corresponds to 500 */
+  font-style: normal;
+  font-display: swap; /* Best practice for font loading */
+}
+
+/* Root variables for easier maintenance */
+:root {
+  font-family: "Stara", sans-serif; /* Always include a fallback font */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --primary-bg-color: #c2e9e7; /* Background for html/body */
+  --secondary-bg-color: #ecf8f5; /* Background for extremes */
+  --dark-text-color: #121312;
+  --light-text-color: rgba(39, 66, 66, 0.6);
+  --border-radius-base: 9px;
+  --font-size-base: 15px;
+  --font-weight-medium: 500;
+  --line-height-normal: normal;
+}
+
+/* Base styles for the layout (desktop-first approach) */
+body {
+  background-color: var(--primary-bg-color);
+  display: flex; /* Makes extremes and main flex items */
+  gap: 1px;
+  width: 100%;
+  box-sizing: border-box; /* Include padding/border in element's total width/height */
+}
+
+.extremes {
+  width: 100%; /* This will be overridden by flex-grow */
+  background-color: var(--secondary-bg-color);
+  border-radius: var(--border-radius-base); /* Corrected typo: border-radius */
+  flex-grow: 1; /* Allows these to take up available space */
+  flex-shrink: 1; /* Allows them to shrink if needed */
+  /* You might want a max-width on desktop if they get too wide */
+  max-width: 200px; /* Example: Limit desktop extreme width */
+  min-width: 50px; /* Ensure they always have some minimal width */
+}
+
+main {
+  border-radius: var(--border-radius-base);
+  display: flex;
+  min-width: 800px; /* Desktop min-width, adjusted from 1200px as an example */
+  padding: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  /* height: 100% is not needed if main is a flex item in a flex container (body)
+     and its content defines its height, or if you want it to stretch.
+     If you want main to fill vertical space, flex-grow: 1 might be needed
+     on main as well, but usually for a single content block, it's implied
+     by the parent's align-items/justify-content if column flex. */
+  background-color: white; /* Added a background for main for visibility */
+}
+
+h1 {
+  color: var(--dark-text-color);
+  text-align: center;
+  font-family: var(--font-family-stara);
+  font-size: var(--font-size-base);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+h2 {
+  color: var(--light-text-color);
+  text-align: center;
+  font-family: var(--font-family-stara);
+  font-size: var(--font-size-base);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: var(--light-text-color);
+  font-family: var(--font-family-stara);
+  font-size: var(--font-size-base);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  text-decoration: none; /* Often desired for links */
+}
+
+/*
+ * Media Query for Mobile (max-width: 768px)
+ * This means these styles will apply when the viewport is 768px or less.
+ */
+@media (max-width: 768px) {
+  body {
+    flex-direction: row; /* Keep as row, but adjust widths */
+    /* Alternatively, for a stacked layout: flex-direction: column;
+       Then you'd need to adjust extreme widths for top/bottom */
+  }
+
+  .extremes {
+    flex-grow: 0; /* Don't grow to fill space on mobile */
+    flex-shrink: 0; /* Don't shrink below content (fixed width) */
+    width: 18px; /* Fixed width for extremes on mobile */
+    min-width: 18px; /* Ensure it's at least 18px */
+    max-width: 18px; /* Ensure it's not more than 18px */
+    height: 100%; /* To make sure they stretch vertically */
+  }
+
+  main {
+    min-width: auto; /* Remove the desktop min-width constraint */
+    width: auto; /* Let content dictate width within available space */
+    flex-grow: 1; /* Allow main to take up remaining space */
+    flex-shrink: 1; /* Allow main to shrink if needed */
+    padding: 15px; /* Adjust padding for smaller screens */
+    gap: 10px; /* Adjust gap for smaller screens */
+    box-sizing: border-box; /* Crucial for width calculations with padding */
+  }
+
+  h1,
+  h2,
+  a {
+    font-size: 13px; /* Smaller font size for mobile */
+  }
+}
+    </style>
+  </head>
+  <body>
+
+      <div class="extremes">
+       
+      </div>
+      <main>
+        <h1>Sorry, the website is currently being developed.</h1>
+        <svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="200" rx="9" fill="#00A084"/>
+        <rect y="159" width="300" height="41" fill="#4EDF88"/>
+        <path d="M56.6543 92.001C74.7391 92.5034 108.69 95.6801 140.312 104.412C156.123 108.778 171.418 114.55 183.87 122.114C196.312 129.672 206.051 139.1 210.516 150.832L207.711 151.899C203.575 141.032 194.452 132.052 182.312 124.679C170.184 117.312 155.178 111.629 139.514 107.304C108.185 98.6528 74.4856 95.4967 56.5703 94.999L56.6543 92.001Z" fill="#FBFFFD"/>
+        <path d="M201.983 157.972C194.655 158.193 174.504 157.799 163.145 157.522C161.801 157.49 160.98 158.732 161.928 159.686C165.219 162.995 172.881 166.411 177.007 167.94C191.649 172.005 219.604 167.835 231.752 165.242C236.159 164.694 240.136 161.749 242.79 159.083C243.961 157.908 243.022 156.107 241.364 156.182L201.983 157.972Z" fill="#121312"/>
+        <path d="M214.488 161.559C198.248 162.915 174.018 160.184 162.195 158.069C161.958 158.027 161.994 157.7 162.235 157.7C172.638 157.72 191.893 158.211 200.825 158.148L242.114 156.25C242.632 156.226 242.789 156.806 242.305 156.99C236.106 159.358 221.782 161.007 214.488 161.559Z" fill="#FBFFFD"/>
+        <path d="M205.623 137.461C206.983 134.741 210.044 135.647 211.404 136.441C213.852 138.345 214.691 142.221 214.804 143.922L213.444 145.282C213.716 151.538 212.197 159.223 211.404 162.284H207.663C206.847 161.196 205.963 154.576 205.623 151.402L204.603 151.742V145.962L203.243 146.982L201.883 146.302L205.623 137.461Z" fill="#121312"/>
+        <path d="M209.698 133.38C209.698 134.695 208.632 135.761 207.318 135.761C206.003 135.761 204.938 134.695 204.938 133.38C204.938 132.066 206.003 131 207.318 131C208.632 131 209.698 132.066 209.698 133.38Z" fill="#121312"/>
+        <path d="M56.6172 200V92" stroke="#FBFFFD"/>
+        </svg>
+        <h2><a href="2022.kashyaprayas.com">Click here</a> to check out the old website (2022)</h2>
+      </main>
+      <div class="extremes">
+       
+      </div>
+  </body>
+</html>
